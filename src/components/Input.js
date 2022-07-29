@@ -24,10 +24,14 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  min: PropTypes.number.isRequired,
+  min: PropTypes.number,
   dataTestId: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+};
+
+Input.defaultProps = {
+  min: 0,
 };
 
 export default Input;

@@ -41,7 +41,6 @@ class Login extends React.Component {
           name="email"
           type="email"
           placeholder="E-mail"
-          min={ 0 }
           dataTestId="email-input"
           value={ email }
           onChange={ this.handleInput }
