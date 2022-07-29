@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCurrencies } from '../redux/actions';
+import { requestFromAPI } from '../redux/actions';
 import Input from './Input';
 
 class WalletForm extends Component {
@@ -18,14 +18,25 @@ class WalletForm extends Component {
   }
 
   async componentDidMount() {
-    const { getCurrencies } = this.props;
-    getCurrencies();
+    const { handleAPI } = this.props;
+    handleAPI();
   }
 
   handleInput = ({ target }) => {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleSubmit = () => {
+    const { storedExpenses, handleAPI } = this.props;
+    const id = storedExpenses.length;
+    const newExpense = { id, ...this.state };
+    handleAPI(newExpense);
+    this.setState({
+      value: '',
+      description: '',
     });
   }
 
@@ -89,22 +100,25 @@ class WalletForm extends Component {
           <option value="Transporte">Transporte</option>
           <option value="Saúde">Saúde</option>
         </select>
+        <button type="button" onClick={ this.handleSubmit }>Adicionar despesa</button>
       </form>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getCurrencies: () => dispatch(fetchCurrencies()),
+  handleAPI: (newExpense) => dispatch(requestFromAPI(newExpense)),
 });
 
 const mapStateToProps = (store) => ({
   storedCurrencies: store.wallet.currencies,
+  storedExpenses: store.wallet.expenses,
 });
 
 WalletForm.propTypes = {
-  getCurrencies: PropTypes.func.isRequired,
+  handleAPI: PropTypes.func.isRequired,
   storedCurrencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  storedExpenses: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

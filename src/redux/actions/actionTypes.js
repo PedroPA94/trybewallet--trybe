@@ -1,4 +1,5 @@
 const USER_LOGIN = 'USER_LOGIN';
 export const SAVE_CURRENCIES = 'SAVE_CURRENCIES';
+export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 
 export default USER_LOGIN;
