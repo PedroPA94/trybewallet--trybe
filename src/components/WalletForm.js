@@ -20,17 +20,6 @@ class WalletForm extends Component {
   async componentDidMount() {
     const { getCurrencies } = this.props;
     getCurrencies();
-    // setCurrencies(currencies);
-  }
-
-  fetchCurrencies = async () => {
-    const endpoint = 'https://economia.awesomeapi.com.br/json/all';
-    const request = await fetch(endpoint);
-    const data = await request.json();
-    const currencies = Object
-      .keys(data)
-      .filter((currency) => currency !== 'USDT');
-    return currencies;
   }
 
   handleInput = ({ target }) => {
