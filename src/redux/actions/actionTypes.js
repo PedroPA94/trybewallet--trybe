@@ -1,6 +1,8 @@
-const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGIN = 'USER_LOGIN';
 export const SAVE_CURRENCIES = 'SAVE_CURRENCIES';
 export const SAVE_EXPENSE = 'SAVE_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const SAVE_EDITED_EXPENSE = 'SAVE_EDITED_EXPENSE';
 
 export default USER_LOGIN;

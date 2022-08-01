@@ -1,19 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteExpense } from '../redux/actions';
+import { deleteExpense, editExpense } from '../redux/actions';
 
 class Table extends Component {
   render() {
-    const { storedExpenses, deleteButton } = this.props;
+    const { storedExpenses, deleteButton, editButton } = this.props;
     const headers = ['Descrição', 'Tag', 'Método de pagamento',
       'Valor', 'Moeda', 'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão',
       'Editar/Excluir'];
     return (
       <table>
-        {
-          headers.map((header, index) => <th key={ index }>{header}</th>)
-        }
+        <thead>
+          <tr>
+            {
+              headers.map((header, index) => <th key={ index }>{header}</th>)
+            }
+          </tr>
+        </thead>
         <tbody>
           {
             storedExpenses.map(({
@@ -32,13 +36,22 @@ class Table extends Component {
                   <td>{convertedValue.toFixed(2)}</td>
                   <td>Real</td>
                   <td>
-                    <button
-                      type="button"
-                      onClick={ () => deleteButton(id) }
-                      data-testid="delete-btn"
-                    >
-                      Excluir
-                    </button>
+                    <div id="action-btns">
+                      <button
+                        type="button"
+                        onClick={ () => deleteButton(id) }
+                        data-testid="delete-btn"
+                      >
+                        Excluir
+                      </button>
+                      <button
+                        type="button"
+                        onClick={ () => editButton(id) }
+                        data-testid="edit-btn"
+                      >
+                        Editar
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );
@@ -52,6 +65,7 @@ class Table extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   deleteButton: (id) => dispatch(deleteExpense(id)),
+  editButton: (id) => dispatch(editExpense(id)),
 });
 
 const mapStateToProps = (store) => ({
@@ -61,6 +75,7 @@ const mapStateToProps = (store) => ({
 Table.propTypes = {
   storedExpenses: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteButton: PropTypes.func.isRequired,
+  editButton: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

@@ -1,4 +1,11 @@
-import USER_LOGIN, { DELETE_EXPENSE, SAVE_CURRENCIES, SAVE_EXPENSE } from './actionTypes';
+import {
+  DELETE_EXPENSE,
+  EDIT_EXPENSE,
+  SAVE_CURRENCIES,
+  SAVE_EDITED_EXPENSE,
+  SAVE_EXPENSE,
+  USER_LOGIN,
+} from './actionTypes';
 
 const loginUser = (email) => ({
   type: USER_LOGIN,
@@ -18,6 +25,16 @@ export const saveExpenses = (expenses) => ({
 export const deleteExpense = (id) => ({
   type: DELETE_EXPENSE,
   payload: id,
+});
+
+export const editExpense = (id) => ({
+  type: EDIT_EXPENSE,
+  payload: id,
+});
+
+export const saveEditedExpense = (editedExpense) => ({
+  type: SAVE_EDITED_EXPENSE,
+  payload: editedExpense,
 });
 
 export function requestFromAPI(newExpense) {
