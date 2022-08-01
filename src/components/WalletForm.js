@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { requestFromAPI } from '../redux/actions';
+import { requestFromAPI, saveEditedExpense } from '../redux/actions';
 import Input from './Input';
 
 class WalletForm extends Component {
@@ -31,9 +31,20 @@ class WalletForm extends Component {
 
   handleSubmit = () => {
     const { storedExpenses, handleAPI } = this.props;
-    const id = storedExpenses.length;
+    const id = storedExpenses.length; // Arrumar: dá problema se alguma despesa é excluída
     const newExpense = { id, ...this.state };
     handleAPI(newExpense);
+    this.setState({
+      value: '',
+      description: '',
+    });
+  }
+
+  handleEdit = () => {
+    const { storedExpenses, setEditedExpense, idToEdit } = this.props;
+    const editedExpense = storedExpenses.find(({ id }) => id === idToEdit);
+    const expenseToDispatch = { ...editedExpense, ...this.state };
+    setEditedExpense(expenseToDispatch);
     this.setState({
       value: '',
       description: '',
@@ -48,7 +59,10 @@ class WalletForm extends Component {
       method,
       tag,
     } = this.state;
-    const { storedCurrencies } = this.props;
+    const {
+      storedCurrencies,
+      editor,
+    } = this.props;
     return (
       <form>
         <Input
@@ -100,7 +114,12 @@ class WalletForm extends Component {
           <option value="Transporte">Transporte</option>
           <option value="Saúde">Saúde</option>
         </select>
-        <button type="button" onClick={ this.handleSubmit }>Adicionar despesa</button>
+        <button
+          type="button"
+          onClick={ editor ? this.handleEdit : this.handleSubmit }
+        >
+          {editor ? 'Editar despesa' : 'Adicionar despesa'}
+        </button>
       </form>
     );
   }
@@ -108,17 +127,27 @@ class WalletForm extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   handleAPI: (newExpense) => dispatch(requestFromAPI(newExpense)),
+  setEditedExpense: (editedExpense) => dispatch(saveEditedExpense(editedExpense)),
 });
 
 const mapStateToProps = (store) => ({
   storedCurrencies: store.wallet.currencies,
   storedExpenses: store.wallet.expenses,
+  editor: store.wallet.editor,
+  idToEdit: store.wallet.idToEdit,
 });
 
 WalletForm.propTypes = {
   handleAPI: PropTypes.func.isRequired,
   storedCurrencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   storedExpenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  editor: PropTypes.bool.isRequired,
+  idToEdit: PropTypes.number,
+  setEditedExpense: PropTypes.func.isRequired,
+};
+
+WalletForm.defaultProps = {
+  idToEdit: undefined,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);
