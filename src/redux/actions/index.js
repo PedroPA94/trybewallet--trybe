@@ -1,10 +1,9 @@
-import {
+import USER_LOGIN, {
   DELETE_EXPENSE,
   EDIT_EXPENSE,
   SAVE_CURRENCIES,
   SAVE_EDITED_EXPENSE,
   SAVE_EXPENSE,
-  USER_LOGIN,
 } from './actionTypes';
 
 const loginUser = (email) => ({
