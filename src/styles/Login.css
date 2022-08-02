@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@900&display=swap');
+
+body {
+  height: 100vh;
+  background: rgb(3,107,82);
+  background: linear-gradient(0deg, rgb(3, 99, 76) 0%, rgba(47,193,140,1) 100%);
+}
+
+.login-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 250px;
+  background-color: white;
+  height: 300px;
+  border: 1px solid rgba(167, 167, 167, 0.6);
+  border-radius: 5px;
+}
+
+button {
+  color: white;
+  background-color: rgba(47,193,140,1);
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  padding: 8px 25px;
+  font-size: 16px;
+  border: none;
+}
+
+button:enabled:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+}
+
+@media (min-width: 760px) {
+  .login-card {
+    width: 350px;
+    height: 400px;
+    gap: 30px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 10px 28px;
+  }
+}
