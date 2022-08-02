@@ -7,7 +7,7 @@ function Logo() {
     <div className="logo">
       <img src={ logo } alt="Logo Trybe" />
       <p>
-        <span id="trybe">Trybe</span>
+        <span className="trybe">Trybe</span>
         Wallet
       </p>
     </div>

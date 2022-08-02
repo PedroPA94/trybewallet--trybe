@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,400;1,700&display=swap') ;
 
 .logo {
-  display: flex;
-  justify-content: center;
   align-items: baseline;
-  gap: 5px;
+  display: flex;
   font-size: 22px;
   font-weight: 300;
+  gap: 5px;
+  justify-content: center;
   letter-spacing: 1px;
   margin-bottom: 5px;
 }
@@ -16,17 +16,18 @@
 }
 
 .logo img {
-  width: 30px;
   height: auto;
+  width: 30px;
 }
 
-#trybe {
-  font-family: 'Epilogue', sans-serif;
+.trybe {
+  font-family: Epilogue, sans-serif;
   font-weight: 900;
   letter-spacing: normal;
 }
 
-@media (min-width: 760px) {
+@media ( min-width : 760px ) {
+
   .logo {
     font-size: 28px;
     margin-bottom: 25px;
@@ -35,5 +36,5 @@
   .logo img {
     width: 38px;
   }
-  
+
 }
