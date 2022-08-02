@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import Input from '../components/Input';
+import Logo from '../components/Logo';
 import loginUser from '../redux/actions';
+import '../styles/Login.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -36,7 +38,8 @@ class Login extends React.Component {
       /\w+@\w+.com/.test(email) && password.length >= MIN_PASSWORD_LENGTH
     );
     return (
-      <div>
+      <section className="login-card">
+        <Logo />
         <Input
           name="email"
           type="email"
@@ -61,7 +64,7 @@ class Login extends React.Component {
         >
           Entrar
         </button>
-      </div>
+      </section>
     );
   }
 }
