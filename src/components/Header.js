@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
 import { connect } from 'react-redux';
+import '../styles/Header.css';
+import Logo from './Logo';
 
 class Header extends Component {
   render() {
@@ -11,11 +14,19 @@ class Header extends Component {
       return acc + parseFloat(value) * rate;
     }, 0);
     return (
-      <div>
-        <p data-testid="email-field">{email}</p>
-        <p data-testid="total-field">{totalExpensesValue.toFixed(2)}</p>
-        <p data-testid="header-currency-field">BRL</p>
-      </div>
+      <header>
+        <Logo />
+        <div className="user">
+          <FaUserAlt className="user-symbol" />
+          <section className="user-info">
+            <p data-testid="email-field">{email}</p>
+            <div className="expenses">
+              <p data-testid="total-field">{totalExpensesValue.toFixed(2)}</p>
+              <p data-testid="header-currency-field">BRL</p>
+            </div>
+          </section>
+        </div>
+      </header>
     );
   }
 }

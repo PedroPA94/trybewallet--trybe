@@ -1,0 +1,57 @@
+header {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.user {
+  align-self: flex-end;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.user-info p {
+  margin: 0;
+}
+
+.user-symbol {
+  display: none;
+}
+
+.expenses {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+@media ( min-width : 760px ) {
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .user-info {
+    align-self: center;
+    font-size: 18px;
+    margin-top: 0;
+    padding-right: 20px;
+  }
+
+  .user-symbol {
+    color: rgba(47, 193, 140, 1);
+    display: block;
+    font-size: 40px;
+  }
+}
