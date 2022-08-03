@@ -31,7 +31,7 @@ class WalletForm extends Component {
 
   handleSubmit = () => {
     const { storedExpenses, handleAPI } = this.props;
-    const id = storedExpenses.length; // Arrumar: dá problema se alguma despesa é excluída
+    const id = storedExpenses.length;
     const newExpense = { id, ...this.state };
     handleAPI(newExpense);
     this.setState({
