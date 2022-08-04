@@ -2,6 +2,7 @@ import USER_LOGIN from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   email: '',
+  loggedIn: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       email: action.payload,
+      loggedIn: true,
     };
   default:
     return state;
