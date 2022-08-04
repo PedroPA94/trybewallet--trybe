@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestFromAPI, saveEditedExpense } from '../redux/actions';
+import '../styles/WalletForm.css';
 import Input from './Input';
 
 class WalletForm extends Component {
@@ -11,9 +12,9 @@ class WalletForm extends Component {
     this.state = {
       value: '',
       description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
+      currency: '',
+      method: '',
+      tag: '',
     };
   }
 
@@ -63,6 +64,7 @@ class WalletForm extends Component {
       storedCurrencies,
       editor,
     } = this.props;
+    const buttonDisabled = Object.values(this.state).includes('');
     return (
       <form>
         <Input
@@ -87,6 +89,9 @@ class WalletForm extends Component {
           data-testid="currency-input"
           onChange={ this.handleInput }
         >
+          <option value="" disabled selected hidden>
+            Moeda
+          </option>
           {
             storedCurrencies
               .map((ticker) => <option key={ ticker } value={ ticker }>{ticker}</option>)
@@ -98,6 +103,9 @@ class WalletForm extends Component {
           data-testid="method-input"
           onChange={ this.handleInput }
         >
+          <option value="" disabled selected hidden>
+            Forma de pagamento
+          </option>
           <option value="Dinheiro">Dinheiro</option>
           <option value="Cartão de crédito">Cartão de crédito</option>
           <option value="Cartão de débito">Cartão de débito</option>
@@ -108,6 +116,9 @@ class WalletForm extends Component {
           data-testid="tag-input"
           onChange={ this.handleInput }
         >
+          <option value="" disabled selected hidden>
+            Categoria
+          </option>
           <option value="Alimentação">Alimentação</option>
           <option value="Lazer">Lazer</option>
           <option value="Trabalho">Trabalho</option>
@@ -117,6 +128,7 @@ class WalletForm extends Component {
         <button
           type="button"
           onClick={ editor ? this.handleEdit : this.handleSubmit }
+          disabled={ buttonDisabled }
         >
           {editor ? 'Editar despesa' : 'Adicionar despesa'}
         </button>
