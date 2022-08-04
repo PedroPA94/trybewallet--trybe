@@ -40,6 +40,7 @@ header {
   header {
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 30px;
   }
 
   .user-info {
@@ -53,5 +54,9 @@ header {
     color: rgba(47, 193, 140, 1);
     display: block;
     font-size: 40px;
+  }
+
+  .logo {
+    margin-bottom: 0;
   }
 }

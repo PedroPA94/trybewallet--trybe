@@ -2,63 +2,68 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteExpense, editExpense } from '../redux/actions';
+import '../styles/Table.css';
 
 class Table extends Component {
   render() {
     const { storedExpenses, deleteButton, editButton } = this.props;
-    const headers = ['Descrição', 'Tag', 'Método de pagamento',
+    const headers = ['Descrição', 'Categoria', 'Forma de pagamento',
       'Valor', 'Moeda', 'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão',
-      'Editar/Excluir'];
+      'Ações'];
     return (
-      <table>
-        <thead>
-          <tr>
+      <section className="expenses-table">
+        <table>
+          <thead>
+            <tr>
+              {
+                headers.map((header, index) => <th key={ index }>{header}</th>)
+              }
+            </tr>
+          </thead>
+          <tbody>
             {
-              headers.map((header, index) => <th key={ index }>{header}</th>)
+              storedExpenses.map(({
+                id, description, tag, method, value, exchangeRates, currency,
+              }) => {
+                const { name, ask } = exchangeRates[currency];
+                const convertedValue = parseFloat(value) * parseFloat(ask);
+                return (
+                  <tr key={ id }>
+                    <td data="Descrição">{description}</td>
+                    <td data="Categoria">{tag}</td>
+                    <td data="Forma de pagamento">{method}</td>
+                    <td data="Valor">{parseFloat(value).toFixed(2)}</td>
+                    <td data="Moeda">{name}</td>
+                    <td data="Câmbio utilizado">{parseFloat(ask).toFixed(2)}</td>
+                    <td data="Valor Convertido">{convertedValue.toFixed(2)}</td>
+                    <td data="Moeda de conversão">Real</td>
+                    <td data="Ações">
+                      <div className="action-btns">
+                        <button
+                          type="button"
+                          onClick={ () => deleteButton(id) }
+                          data-testid="delete-btn"
+                          className="delete-btn"
+                        >
+                          Excluir
+                        </button>
+                        <button
+                          type="button"
+                          onClick={ () => editButton(id) }
+                          data-testid="edit-btn"
+                          className="edit-btn"
+                        >
+                          Editar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
             }
-          </tr>
-        </thead>
-        <tbody>
-          {
-            storedExpenses.map(({
-              id, description, tag, method, value, exchangeRates, currency,
-            }) => {
-              const { name, ask } = exchangeRates[currency];
-              const convertedValue = parseFloat(value) * parseFloat(ask);
-              return (
-                <tr key={ id }>
-                  <td>{description}</td>
-                  <td>{tag}</td>
-                  <td>{method}</td>
-                  <td>{parseFloat(value).toFixed(2)}</td>
-                  <td>{name}</td>
-                  <td>{parseFloat(ask).toFixed(2)}</td>
-                  <td>{convertedValue.toFixed(2)}</td>
-                  <td>Real</td>
-                  <td>
-                    <div id="action-btns">
-                      <button
-                        type="button"
-                        onClick={ () => deleteButton(id) }
-                        data-testid="delete-btn"
-                      >
-                        Excluir
-                      </button>
-                      <button
-                        type="button"
-                        onClick={ () => editButton(id) }
-                        data-testid="edit-btn"
-                      >
-                        Editar
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })
-          }
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </section>
     );
   }
 }

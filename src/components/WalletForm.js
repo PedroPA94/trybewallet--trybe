@@ -38,6 +38,9 @@ class WalletForm extends Component {
     this.setState({
       value: '',
       description: '',
+      currency: '',
+      method: '',
+      tag: '',
     });
   }
 
@@ -49,6 +52,9 @@ class WalletForm extends Component {
     this.setState({
       value: '',
       description: '',
+      currency: '',
+      method: '',
+      tag: '',
     });
   }
 
