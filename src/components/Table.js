@@ -13,7 +13,7 @@ class Table extends Component {
     return (
       <section className="expenses-table">
         { storedExpenses.length > 0
-          && (
+          ? (
             <table>
               <thead>
                 <tr>
@@ -64,7 +64,8 @@ class Table extends Component {
                   })
                 }
               </tbody>
-            </table>)}
+            </table>)
+          : <h2>Sem despesas registradas</h2>}
       </section>
     );
   }

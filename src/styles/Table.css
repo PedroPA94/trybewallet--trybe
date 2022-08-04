@@ -43,6 +43,10 @@ tr:nth-child( even ) {
   background-color: blue;
 }
 
+h2 {
+  text-align: center;
+}
+
 @media ( max-width : 910px ) {
 
   /* Baseado em https://elvery.net/demo/responsive-tables/ (no more tables) */
@@ -95,4 +99,7 @@ tr:nth-child( even ) {
     width: 100%;
   }
 
+  h2 {
+    font-size: 18px;
+  }
 }

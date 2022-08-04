@@ -1,0 +1,29 @@
+.container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 150px;
+  width: 100vw;
+}
+
+h2 {
+  margin-bottom: 50px;
+  margin-top: 150px;
+}
+
+a:visited {
+  color: #323333;
+}
+
+@media ( min-width : 760px ) {
+
+  h2 {
+    font-size: 28px;
+  }
+
+  a {
+    font-size: 20px;
+  }
+}
