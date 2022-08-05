@@ -23,6 +23,11 @@ class WalletForm extends Component {
     handleAPI();
   }
 
+  componentDidUpdate(prevProps) {
+    const { idToEdit, editor } = this.props;
+    if (idToEdit !== prevProps.idToEdit && editor) { this.setStateFromExpense(); }
+  }
+
   handleInput = ({ target }) => {
     const { name, value } = target;
     this.setState({
@@ -55,6 +60,19 @@ class WalletForm extends Component {
       currency: '',
       method: '',
       tag: '',
+    });
+  }
+
+  setStateFromExpense = () => {
+    const { idToEdit, storedExpenses } = this.props;
+    const editedExpense = storedExpenses.find(({ id }) => id === idToEdit);
+    const { value, description, currency, method, tag } = editedExpense;
+    this.setState({
+      value,
+      description,
+      currency,
+      method,
+      tag,
     });
   }
 
