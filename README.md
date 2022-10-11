@@ -8,6 +8,8 @@
 
 This project is a tool for the user to control his/her expenses. After login in, the user can add an expense in any of the avaliable currencies, write its description, add a payment method and assign a category. Once an expese is created, it can be edited or deleted. The total amount spent is shown in the top right corner, converted to BRL.
 
+[Check it out!](https://pedropa94.github.io/trybewallet--trybe/)
+
 This project was done using Test Driven Development (TDD), a technique in which the developer first writes the tests for a funcionality before actually implementing it. The application is also responsive, so it can be used on a mobile, tablet or computer.
 
 This application uses [this API](https://docs.awesomeapi.com.br/api-de-moedas) to fetch the exchange rates.
