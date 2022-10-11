@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { deleteExpense, editExpense } from '../redux/actions';
 import '../styles/Table.css';
@@ -47,7 +48,7 @@ class Table extends Component {
                               data-testid="delete-btn"
                               className="delete-btn"
                             >
-                              Excluir
+                              <FaTrash />
                             </button>
                             <button
                               type="button"
@@ -55,7 +56,7 @@ class Table extends Component {
                               data-testid="edit-btn"
                               className="edit-btn"
                             >
-                              Editar
+                              <FaEdit />
                             </button>
                           </div>
                         </td>
