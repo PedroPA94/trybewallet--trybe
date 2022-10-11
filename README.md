@@ -22,7 +22,7 @@ This project was developed while studying Front-end web development [@betrybe](h
 
 ## Installation
 
-- Install the dependencies with ``` npm install ```
+- Install the dependencies with ``` npm install ``` (requires node on version 16)
 - Run the app with ```npm start```
 - Run the project's requirements tests with  ```npm run cy``` or ```npm run cy:open``` (might not show 100% approval after changes I made)
 - For test coverage, run ```npm run test-coverage```
