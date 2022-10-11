@@ -2,7 +2,7 @@
 
 <div align='center'>
 
-## Adicionar GIF da aplicação
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/75266925/195096974-11309ab1-36f0-445b-807f-dad0b59436c3.gif)
 
 </div>
 
