@@ -6,7 +6,7 @@
 
 </div>
 
-This project is a tool for the user to control his/her expenses. After login in, the user can add an expense in any of the avaliable currencies, write its description, add a payment method and assign a category. Once an expese is created, it can be edited or deleted. The total amount spent is shown in the top right corner, converted to BRL.
+This project is a tool for the user to control his/her expenses. After login in, the user can add an expense in any of the avaliable currencies, write its description, add a payment method and assign a category. Once an expense is created, it can be edited or deleted. The total amount spent is shown in the top right corner, converted to BRL.
 
 [Check it out!](https://pedropa94.github.io/trybewallet--trybe/)
 
